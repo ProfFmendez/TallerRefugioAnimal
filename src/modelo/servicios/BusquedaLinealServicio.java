@@ -70,6 +70,14 @@ public class BusquedaLinealServicio {
         //    - Verificar que su getIdentificacion() == id
         // 3. Si ambas condiciones son true, RETORNAR la mascota
         // 4. Si termina el loop sin encontrar, RETORNAR null
+        
+        for (int i = 0; i < mascotas.length; i++) {
+            if (mascotas[i] != null) {
+                if (mascotas[i].getIdentificacion() == id) {
+                    return mascotas[i];
+                }
+            }
+        }
         return null;
     }
 
@@ -100,6 +108,9 @@ public class BusquedaLinealServicio {
         // Búsqueda lineal: recorrer cada mascota
         for (Mascota mascota : mascotas) {
             // Verificar que no sea null y que el nombre coincida
+            
+            
+            
             if (mascota != null && mascota.getNombre().equals(nombre)) {
                 return mascota;  // Encontrada
             }
