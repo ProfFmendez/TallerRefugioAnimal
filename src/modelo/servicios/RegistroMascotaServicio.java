@@ -47,14 +47,20 @@ public class RegistroMascotaServicio {
      * @return true si se agregó correctamente, false si no hay espacio disponible
      */
     public boolean agregar(Mascota[] mascotas, Mascota nuevaMascota) {
-        // TODO ESTUDIANTE 01: implementar el registro.
-        // Pasos:
-        // 1. Validar que mascotas no sea null y nuevaMascota no sea null
-        // 2. Recorrer el array mascotas
-        // 3. Encontrar la primera posición donde mascotas[i] == null
-        // 4. Asignar mascotas[i] = nuevaMascota
-        // 5. Retornar true
-        // 6. Si no encuentra espacio null, retornar false
+        if(mascotas != null & nuevaMascota != null){
+            // Recorrer el array mascotas}
+            for (int i = 0; i <= mascotas.length; i++) {
+                // Encontrar la primera posición donde mascotas[i] == null
+                if(mascotas[i] == null){
+                    // Asignar mascotas[i] = nuevaMascota
+                    mascotas[i] = nuevaMascota;
+                    // Retornar true
+                    return true;
+                }
+            }
+            //Si no encuentra espacio null, retornar false
+            return false;     
+        }  
         return false;
     }
 
@@ -83,7 +89,7 @@ public class RegistroMascotaServicio {
         // Recorrer el array y contar las posiciones no-null
         int cantidad = 0;
         for (Mascota mascota : mascotas) {
-            if (mascota != null) {
+            if (mascota == null) {
                 cantidad++;
             }
         }
