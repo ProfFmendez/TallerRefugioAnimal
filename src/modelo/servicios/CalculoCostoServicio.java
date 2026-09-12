@@ -58,7 +58,14 @@ public class CalculoCostoServicio {
         //    - Verificar que NO está adoptada (isAdoptada() == false)
         // 4. Si ambas son verdad, sumar mascota.calcularCostoMensual() al total
         // 5. Retornar total
-        return 0;
+  
+        double total = 0;
+        for (Mascota mascota : mascotas) {
+            if (mascotas != null && !mascota.isAdoptada()) {
+                total = mascota.calcularCostoMensual();
+            }
+        }
+        return total;
     }
 
     /**
@@ -80,29 +87,29 @@ public class CalculoCostoServicio {
         if (mascotas == null) {
             return 0;
         }
-        
+  
         // Variables para acumular datos
         int cantidad = 0;
         double total = 0;
-        
+
         // Recorrer todas las mascotas
         for (Mascota mascota : mascotas) {
             // Contar total de mascotas (null o no)
-            if (mascota != null) {
+            if (mascota != null && !mascota.isAdoptada()) {
                 cantidad++;
             }
-            
+
             // Sumar costo solo si existe Y no está adoptada
             if (mascota != null && !mascota.isAdoptada()) {
                 total += mascota.calcularCostoMensual();
             }
         }
-        
+
         // Evitar división por cero
         if (cantidad == 0) {
             return 0;
         }
-        
+
         // Retornar el promedio
         return total / cantidad;
     }
