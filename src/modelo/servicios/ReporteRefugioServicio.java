@@ -2,15 +2,18 @@ package modelo.servicios;
 
 import modelo.Mascota;
 
-/**
- *
- * @author franc
- */
 public class ReporteRefugioServicio {
 
     public String generarResumen(Mascota[] mascotas) {
-        // TODO ESTUDIANTE 15: implementar el resumen general.
-        return "";
+        int total = mascotas.length;
+        int adoptadas = 0;
+        for (Mascota mascota : mascotas) {
+            if (mascota.isAdoptada()) {
+                adoptadas++;
+            }
+        }
+        int disponibles = total - adoptadas;
+        return "Total: " + total + " | Adoptadas: " + adoptadas + " | Disponibles: " + disponibles;
     }
 
     public String generarDetalle(Mascota mascota) {
@@ -18,6 +21,6 @@ public class ReporteRefugioServicio {
             return "Mascota no disponible";
         }
         return "ID: " + mascota.getIdentificacion() + " | Nombre: "
-                + mascota.getNombre();
+                + mascota.getNombre() + " | Tipo: " + mascota.getTipo();
     }
 }
