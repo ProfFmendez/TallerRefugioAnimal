@@ -7,7 +7,13 @@ package modelo.servicios;
 public class AsignacionJaulaServicio {
 
     public String buscarUbicacion(int[][] mapa, int numeroJaula) {
-        // TODO ESTUDIANTE 09: implementar la búsqueda en la matriz.
+        for (int fila = 0; fila < mapa.length; fila++) {
+            for (int columna = 0; columna < mapa[fila].length; columna++) {
+                if (mapa[fila][columna]==numeroJaula) {
+                    return "Fila " + fila + ", " + "columna " + columna;
+                }
+            }//for columna
+        }//for fila
         return "No encontrada";
     }
 
@@ -17,7 +23,7 @@ public class AsignacionJaulaServicio {
         }
         for (int fila = 0; fila < mapa.length; fila++) {
             for (int columna = 0; columna < mapa[fila].length; columna++) {
-                if (mapa[fila][columna] != numeroJaula) {
+                if (mapa[fila][columna] == numeroJaula) {
                     return true;
                 }
             }
