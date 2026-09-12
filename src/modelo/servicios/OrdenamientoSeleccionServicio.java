@@ -10,6 +10,28 @@ public class OrdenamientoSeleccionServicio {
 
     public Mascota[] ordenarPorIdAscendente(Mascota[] mascotas) {
         // TODO ESTUDIANTE 07: implementar Selection Sort por ID ascendente.
+        
+        if (mascotas == null){
+            return null;
+        }// if
+        compactar(mascotas);
+        
+        int cantidad = contarMascotas(mascotas);
+        
+        for (int i = 0; i < cantidad - 1; i++) {
+            int posicionMenor = i;
+            for (int j = i+1; j < cantidad; j++) {
+                if(mascotas[j].getIdentificacion() < mascotas[posicionMenor].getIdentificacion() ){
+                    posicionMenor = j;
+                }
+                    
+            }//for j
+          Mascota temp = mascotas[i];
+          mascotas[i] = mascotas[posicionMenor];
+          mascotas[posicionMenor] = temp;
+            
+        }//for i
+        
         return mascotas;
     }
 
@@ -17,12 +39,13 @@ public class OrdenamientoSeleccionServicio {
         if (mascotas == null) {
             return false;
         }
+        
         for (int i = 0; i < mascotas.length - 1; i++) {
             if (mascotas[i] == null && mascotas[i + 1] != null) {
                 return false;
             }
             if (mascotas[i] != null && mascotas[i + 1] != null
-                    && mascotas[i].getIdentificacion() < mascotas[i + 1].getIdentificacion()) {
+                    && mascotas[i].getIdentificacion() > mascotas[i + 1].getIdentificacion()) {
                 return false;
             }
         }
